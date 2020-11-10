@@ -2,7 +2,9 @@
 
 Pandas is a package for data manipulation and analytics in Python. It is highly popular in both the scientific and commercial communities. Pandas is well suited for ad-hoc exploratory work, prototyping and use in production systems due to its productivity and efficiency. Pandas is highly flexible, however, this leads to there being more than one way to skin a Panda.
 
-This opinionated guide, about Pandas and using DataFrames, presents best practices to write code that more consistent, reliable, maintainable and readable by practitioners. This is mainly aimed at code which is used in production systems and not ad-hoc exploratory work.
+This opinionated guide, about Pandas and using DataFrames, presents best practices to write code that is more consistent, reliable, maintainable and readable by practitioners. This is mainly aimed at code which is used in production systems and not ad-hoc exploratory work.
+
+*Why do we need this?* Users of Pandas have a divers background (e.g. Data Scientist, Data Engineer, Researcher, Software Engineer) and language experience (e.g. SQL, MATLAB, Java)
 
 # Column selection
 
