@@ -124,7 +124,7 @@ df[df['A'] > df['B']]
 df.query('A > B')
 ```
 
-Use idiomatic Pandas querying instead of SQL like string querying. This provides a more consistent use of the Pandas API.
+Use idiomatic Pandas querying instead of SQL like string querying.
 
 # Mutability of DataFrames
 
