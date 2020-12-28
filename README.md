@@ -4,7 +4,7 @@ Pandas is a package for data manipulation and analytics in Python. It is highly 
 
 This opinionated guide, about Pandas and using DataFrames, presents best practices to write code that is more consistent, reliable, maintainable and readable by practitioners. This is mainly aimed at code which is used in production systems and not ad-hoc exploratory work.
 
-*Why do we need this?* Users of Pandas have a divers background (e.g. Data Scientist, Data Engineer, Researcher, Software Engineer) and language experience (e.g. SQL, MATLAB, Java)
+*Why do we need this?* Users of Pandas have a diverse background (e.g. Data Scientist, Data Engineer, Researcher, Software Engineer) and language experience (e.g. SQL, MATLAB, Java) which can lead to various coding style.
 
 # Column selection
 
@@ -21,6 +21,28 @@ When selecting a column in a dataframe users should use dictionary like selectio
 Why:
 * It makes it more explict to the user that you are accessing a column and not a standard property or method
 * Not all column names can be represented as a property - it must be a valid Python variable name. The column name also must not clash with an existing method or property
+
+# Avoid chained indexing
+
+```python
+# Good
+df.loc[df['A'] > 1, 'B'] = 1
+
+# Bad (chained indexing)
+df[df['A'] > 1]['B'] = 1
+```
+
+Indexing or slicing a dataframe twice can lead to unintended behaviour. In the second "chained indexing" example the column `B` **does not** get set with value `1`. A warning stating that "A value is trying to be set on a copy of a slice from a DataFrame." is also shown by Pandas.
+
+In these circumstances use the `loc` and `iloc` methods to select both rows and columns.
+
+Sometimes chained indexing is unavoidable. In these circumstances explicitly copy the dataframe. For example:
+
+```python
+df2 = df[df['A'] > 1].copy()
+df2['B'] = 1
+df2['C'] = 2
+```
 
 # Copy vs re-assignment
 
@@ -81,7 +103,7 @@ Also, don't deduplicate rows after a merge to remove merge duplication. Remove d
 
 ```python
 # Good
-df['new_col_float'] = np.nan
+df['new_col_float'] = pd.NA
 df['new_col_int'] = pd.Series(dtype='int')
 df['new_col_str'] = pd.Series(dtype='object')
 
@@ -90,7 +112,7 @@ df['new_col_int'] = 0
 df['new_col_str'] = ''
 ```
 
-If a new empty column is needed always use NaN values. Never use "filler" values such as zeros or empty strings. This preserves the ability to use methods such as `isnull` or `notnull`.
+If a new empty column is needed always use `pd.NA` values. Never use "filler" values such as zeros or empty strings. This preserves the ability to use methods such as `isnull` or `notnull`.
 
 # Querying data
 
@@ -102,7 +124,7 @@ df[df['A'] > df['B']]
 df.query('A > B')
 ```
 
-Use idiomatic Pandas querying instead of SQL like string querying.
+Use idiomatic Pandas querying instead of SQL like string querying. This provides a more consistent use of the Pandas API.
 
 # Mutability of DataFrames
 
