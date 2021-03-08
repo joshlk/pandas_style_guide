@@ -92,18 +92,6 @@ df['new_col_str'] = ''
 
 If a new empty column is needed always use NaN values. Never use "filler" values such as zeros or empty strings. This preserves the ability to use methods such as `isnull` or `notnull`.
 
-# Querying data
-
-```python
-# Good
-df[df['A'] > df['B']]
-
-# Bad
-df.query('A > B')
-```
-
-Use idiomatic Pandas querying instead of SQL like string querying.
-
 # Mutability of DataFrames
 
 ```python
