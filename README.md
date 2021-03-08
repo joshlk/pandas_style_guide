@@ -4,7 +4,7 @@ Pandas is a package for data manipulation and analytics in Python. It is highly 
 
 This opinionated guide, about Pandas and using DataFrames, presents best practices to write code that is more consistent, reliable, maintainable and readable by practitioners. This is mainly aimed at code which is used in production systems and not ad-hoc exploratory work.
 
-*Why do we need this?* Users of Pandas have a divers background (e.g. Data Scientist, Data Engineer, Researcher, Software Engineer) and language experience (e.g. SQL, MATLAB, Java)
+*Why do we need this?* Users of Pandas have a divers backgrounds (e.g. Data Scientist, Data Engineer, Researcher, Software Engineer) and language experiences (e.g. SQL, MATLAB, Java) which can lead to inconsistent coding styles and use of bad practices.
 
 # Column selection
 
